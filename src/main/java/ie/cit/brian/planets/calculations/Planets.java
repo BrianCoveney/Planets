@@ -17,10 +17,6 @@ public enum Planets {
     // Universal gravitational constant in m^3 / kg s^2
     private static final double G = 6.67300E-11;
 
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
     private double mass;
     private double radius;
     private double surfaceGravity;
@@ -41,20 +37,6 @@ public enum Planets {
     public double getMass() {
         return mass;
     }
-
-    public void setMass(double mass) {
-        this.mass = mass;
-    }
-
-    public double surfaceWeightKilograms(double mass) {
-        return mass * surfaceGravity;
-    }
-
-
-    public double surfaceWeightPounds(double mass) {return mass * surfaceGravity * 2.2; }
-
-
-
 }
 
 
