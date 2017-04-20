@@ -1,11 +1,9 @@
 package ie.cit.brian.planets.calculations;
 
-import java.util.List;
-
 /**
  * Created by brian on 17/04/17.
  */
-public enum WeightInKilograms implements ICalculate {
+public enum Planets {
 
     MERCURY(3.302e+23, 2.439e6),
     VENUS(4.869e+24, 6.052e6),
@@ -18,39 +16,79 @@ public enum WeightInKilograms implements ICalculate {
 
     // Universal gravitational constant in m^3 / kg s^2
     private static final double G = 6.67300E-11;
-    private static final String CALC_NAME = "In Kilograms";
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
     private double mass;
     private double radius;
     private double surfaceGravity;
-    private double surfaceArea;
 
-    WeightInKilograms() {}
 
-    WeightInKilograms(double mass, double radius) {
+    Planets(double mass, double radius) {
         this.mass = mass;
         this.radius = radius;
-        surfaceGravity = G * mass / (radius * radius);
+        setSurfaceGravity();
     }
 
+    public void setSurfaceGravity() {
+        this.surfaceGravity = G * mass / (radius * radius);
+    }
 
     public double getSurfaceGravity() { return surfaceGravity; }
 
-
-    @Override
-    public String getCalcName() {
-        return CALC_NAME;
+    public double getMass() {
+        return mass;
     }
 
-    @Override
-    public double surfaceWeight(double mass) {
+    public void setMass(double mass) {
+        this.mass = mass;
+    }
+
+    public double surfaceWeightKilograms(double mass) {
         return mass * surfaceGravity;
     }
 
 
+    public double surfaceWeightPounds(double mass) {return mass * surfaceGravity * 2.2; }
 
-    // not called
-    public List<String> calculateWeight(Double param) {
-        return null;
-    }
-    
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

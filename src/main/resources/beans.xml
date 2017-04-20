@@ -9,17 +9,12 @@
         we need to use the enum valueOf static method as a factory method.
         Ref: https://robertmaldon.blogspot.ie/2007/05/creating-spring-bean-from-java-5-enum.html
     -->
-    <bean id="weightInKilograms" class="ie.cit.brian.planets.calculations.WeightInKilograms" factory-method="valueOf" >
+    <bean id="weightInKilograms" class="ie.cit.brian.planets.calculations.Planets" factory-method="valueOf" >
         <constructor-arg>
             <value>EARTH</value>
         </constructor-arg>
     </bean>
 
-    <bean id="weightInPounds" class="ie.cit.brian.planets.calculations.WeightInPounds" factory-method="valueOf" >
-        <constructor-arg>
-            <value>EARTH</value>
-        </constructor-arg>
-    </bean>
 
 
     <!--create bean from CalcKilograms.class-->
@@ -44,10 +39,10 @@
 
 
         <!--cause setCalculateType (ICalculate <CalcInPounds>) to be called-->
-        <property name="calculateType" ref="pounds" />
+        <!--<property name="calculateType" ref="pounds" />-->
 
         <!--cause setCalculateType (ICalculate <CalcInKilograms>) to be called-->
-        <!--<property name="calculateType" ref="kilograms" />-->
+        <property name="calculateType" ref="kilograms" />
 
 
         <!--cause setWriterType (IWriter <ScreenWriter>) to be called-->

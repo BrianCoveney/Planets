@@ -7,31 +7,37 @@ import java.util.*;
  */
 public class CalcPounds implements ICalculate{
 
+    private double mass;
+    private double surfaceGravity;
+    private String planetName;
+    private double weight;
 
+
+    @Override
     public String getCalcName() {
         return "Calculation in Pounds";
     }
 
 
     @Override
-    public List<String> calculateWeight(Double input) {
+    public List<String> calcWeight(double input) {
 
-        Double weight;
-        Double weightRounded;
-        String planet = null;
 
         HashMap<String, Double> map = new HashMap<>();
 
-        // Weight in Pounds
-        for (ICalculate p : WeightInPounds.values()) {
 
-            planet = String.valueOf(p);
-            weight = p.surfaceWeight(input);
-            weightRounded = Math.round(weight * 100D) / 100D;
+        for(Planets planets : Planets.values()) {
 
-            map.put(planet, weightRounded);
+            planetName = String.valueOf(planets);
+
+            mass = planets.getMass();
+
+            surfaceGravity = planets.getSurfaceGravity();
+
+            weight = surfaceWeight(input);
+
+            map.put(planetName, weight);
         }
-
 
         ArrayList<String> list = new ArrayList<>();
 
@@ -44,12 +50,11 @@ public class CalcPounds implements ICalculate{
     }
 
 
-
-    // not called
+    // returns weight in pounds
     @Override
-    public double surfaceWeight(double param) {
-        return 0;
-    }
+    public double surfaceWeight(double mass) {return mass * surfaceGravity * 2.2; }
+
+
 
 
 

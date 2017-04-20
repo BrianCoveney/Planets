@@ -1,7 +1,7 @@
 package ie.cit.brian.planets.app;
 
 import ie.cit.brian.planets.calculations.ICalculate;
-import ie.cit.brian.planets.calculations.WeightInKilograms;
+import ie.cit.brian.planets.calculations.Planets;
 import ie.cit.brian.planets.writers.IWriter;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -34,11 +34,11 @@ public class Main {
 
         // example of persons weight on Earth
         double earthWeightInKg = 175;
-
-        double mass = earthWeightInKg / WeightInKilograms.EARTH.getSurfaceGravity();
+//
+        double mass = earthWeightInKg / Planets.EARTH.getSurfaceGravity();
 
         iWriter.showResult(iCalculate.getCalcName() + ": \n"
-                + iCalculate.calculateWeight(mass));
+                + iCalculate.calcWeight(mass));
 
 
     }

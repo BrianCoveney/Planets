@@ -9,10 +9,8 @@ public interface ICalculate {
 
     String getCalcName();
 
-    double surfaceWeight(double param);
+    double surfaceWeight(double mass);
 
-    List<String> calculateWeight(Double param);
-
-
+    List<String> calcWeight(double input);
 
 }
