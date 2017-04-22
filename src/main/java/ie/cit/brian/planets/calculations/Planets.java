@@ -34,9 +34,13 @@ public enum Planets {
 
     public double getSurfaceGravity() { return surfaceGravity; }
 
-    public double getMass() {
-        return mass;
-    }
+    public double getMass() { return mass; }
+
+    public double getRadius() { return radius; }
+
+
+
+
 }
 
 

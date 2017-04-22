@@ -16,13 +16,30 @@
     </bean>
 
 
+    <bean id="hashMap" class="ie.cit.brian.planets.calculations.PlanetHashMap"/>
 
-    <!--create bean from CalcKilograms.class-->
-    <bean id="kilograms" class="ie.cit.brian.planets.calculations.CalcKilograms" />
+    <bean id="treeMap" class="ie.cit.brian.planets.calculations.PlanetTreeMap"/>
+
+    <bean id="enumMap" class="ie.cit.brian.planets.calculations.PlanetEnumMap"/>
 
 
-    <!--create bean from CalcPounds.class-->
-    <bean id="pounds" class="ie.cit.brian.planets.calculations.CalcPounds" />
+    <!--create bean from CalcInKilogramsrams.class-->
+    <bean id="kilograms" class="ie.cit.brian.planets.calculations.CalcInKilograms" lazy-init="false">
+        <property name="planetMap" ref="hashMap"/>
+    </bean>
+
+    <!--create bean from CalcInPoundsunds.class-->
+    <bean id="pounds" class="ie.cit.brian.planets.calculations.CalcInPounds">
+        <property name="planetTreeMap" ref="treeMap"/>
+    </bean>
+
+    <!--create bean from CalcInPoundsunds.class-->
+    <bean id="stones" class="ie.cit.brian.planets.calculations.CalcInStone">
+        <property name="planetEnumMap" ref="enumMap"/>
+    </bean>
+
+
+
 
 
 
@@ -42,7 +59,10 @@
         <!--<property name="calculateType" ref="pounds" />-->
 
         <!--cause setCalculateType (ICalculate <CalcInKilograms>) to be called-->
-        <property name="calculateType" ref="kilograms" />
+        <!--<property name="calculateType" ref="kilograms" />-->
+
+        <!--cause setCalculateType (ICalculaCalcInStoneones>) to be called-->
+        <property name="calculateType" ref="stones" />
 
 
         <!--cause setWriterType (IWriter <ScreenWriter>) to be called-->
