@@ -11,12 +11,14 @@ public class ScreenWriter implements IWriter{
     @Override
     public void showResult(String input) {
 
-        String removedBrackets = input.toString().replace("[", "").replace("]", "");
+        String formatted = input.toString()
+                .replace("{", "")
+                .replace("}", "")
+                .replace("]", "")
+                .replace("[", "")
+                .replace(", ", "\n");
 
-        String result = removedBrackets.toString().replace(", ", "\n");
-
-
-        System.out.println(result);
+        System.out.println(formatted);
 
     }
 }

@@ -1,6 +1,6 @@
 package ie.cit.brian.planets.calculations;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 /**
@@ -15,7 +15,7 @@ public class PlanetEnumMap implements ICollection {
     private Map<Planets, Double> mapOfPlanets;
 
     public PlanetEnumMap() {
-        mapOfPlanets = new HashMap<>();
+        mapOfPlanets = new EnumMap<>(Planets.class);
     }
 
     @Override
@@ -32,4 +32,5 @@ public class PlanetEnumMap implements ICollection {
 
         return mapOfPlanets;
     }
+
 }

@@ -25,37 +25,48 @@ public class CalcInStone implements ICalculate{
     @Override
     public <T> String calculationResult(double input) {
 
-
+        /**
+         * @see PlanetEnumMap#setMapOfPlanets(double)
+         */
         enumMap = planetMap.setMapOfPlanets(input);
 
-        List<String> linkedList = new LinkedList<>();
 
-        List<Planets> arrayListKeys = new LinkedList<>(enumMap.keySet());
-        for (Planets key: arrayListKeys) {
-            linkedList.add("Weight on " + key + " is " + enumMap.get(key));
+        // here is a List to represent the sorted map
+        List<Map.Entry<Planets, Double>> list;
+        list = sortMapByValue(enumMap);
+
+
+        // here is ArrayList which will hold and return our string
+        String output;
+        List<String> arrayList = new ArrayList<>();
+        for(Map.Entry<Planets, Double> entry : list) {
+            Planets planet = entry.getKey();
+
+            output = "Weight on " + planet + " is " + entry.getValue();
+            arrayList.add(output);
+
         }
-        return String.valueOf(linkedList);
+
+        return arrayList.toString();
     }
 
+
+    // here is a generic method that takes a Map and sorts it based on its Value, in ascending order
+    public static <K, V extends Comparable<? super V>> List<Map.Entry<K, V>> sortMapByValue(Map<K, V> map ) {
+
+        List<Map.Entry<K, V>> mapList = new LinkedList(map.entrySet());
+
+        Collections.sort(mapList, new Comparator<Map.Entry<K, V>>() {
+            @Override
+            public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+
+        return mapList;
+    }
 
 
 
 }
 
-
-
-
-
-//        List<Planets> p = Arrays.asList(Planets.values().clone());
-//        ListIterator<Planets> iterator = p.listIterator();
-
-//        int i = 0;
-//        while (iterator.hasNext()) {
-//
-//            planetName = String.valueOf(p);
-//            mass = p.get(i).getMass();
-//            surfaceGravity = p.get(i).getSurfaceGravity();
-//            weight = surfaceWeight(input);
-//            treeMap.put(planetName, weight);
-//            i++;
-//        }

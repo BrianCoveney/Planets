@@ -7,8 +7,6 @@ public interface ICalculate {
 
     String getCalcName();
 
-
-
     <T> String calculationResult(double input);
 
 }

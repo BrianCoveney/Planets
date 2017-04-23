@@ -34,7 +34,7 @@
     </bean>
 
     <!--create bean from CalcInPoundsunds.class-->
-    <bean id="stones" class="ie.cit.brian.planets.calculations.CalcInStone">
+    <bean id="stone" class="ie.cit.brian.planets.calculations.CalcInStone">
         <property name="planetEnumMap" ref="enumMap"/>
     </bean>
 
@@ -61,8 +61,8 @@
         <!--cause setCalculateType (ICalculate <CalcInKilograms>) to be called-->
         <!--<property name="calculateType" ref="kilograms" />-->
 
-        <!--cause setCalculateType (ICalculaCalcInStoneones>) to be called-->
-        <property name="calculateType" ref="stones" />
+        <!--cause setCalculateType (ICalculaCalcInStone>) to be called-->
+        <property name="calculateType" ref="stone" />
 
 
         <!--cause setWriterType (IWriter <ScreenWriter>) to be called-->

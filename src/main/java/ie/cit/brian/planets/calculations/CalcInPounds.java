@@ -1,6 +1,9 @@
 package ie.cit.brian.planets.calculations;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by brian on 19/04/17.
@@ -29,6 +32,8 @@ public class CalcInPounds implements ICalculate{
         // dependency injection
         treeMap = planetTreeMap.setMapOfPlanets(input);
 
+
+
         List<String> arrayList = new ArrayList<>();
 
         List<Planets> arrayListKeys = new ArrayList<>(treeMap.keySet());
@@ -36,9 +41,8 @@ public class CalcInPounds implements ICalculate{
             arrayList.add("Weight on " + key + " is " + treeMap.get(key));
         }
 
-        Collections.sort(arrayList, String::compareTo);
 
-        return String.valueOf(arrayList);
+        return String.valueOf(treeMap.toString());
     }
 
 }
