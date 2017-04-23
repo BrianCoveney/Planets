@@ -1,5 +1,7 @@
 package ie.cit.brian.planets.calculations;
 
+import ie.cit.brian.planets.helpers.SortMap;
+
 import java.util.*;
 
 /**
@@ -10,6 +12,8 @@ public class CalcInStone implements ICalculate{
 
     private Map<Planets, Double> enumMap = new EnumMap<>(Planets.class);
     private ICollection planetMap;
+
+    public CalcInStone() { }
 
     public void setPlanetEnumMap(ICollection planetEnumMap) {
         this.planetMap = planetEnumMap;
@@ -26,14 +30,14 @@ public class CalcInStone implements ICalculate{
     public <T> String calculationResult(double input) {
 
         /**
-         * @see PlanetEnumMap#setMapOfPlanets(double)
+         * @see PlanetEnumMap#createMap(double)
          */
-        enumMap = planetMap.setMapOfPlanets(input);
+        enumMap = planetMap.createMap(input);
 
 
         // here is a List to represent the sorted map
         List<Map.Entry<Planets, Double>> list;
-        list = sortMapByValue(enumMap);
+        list = SortMap.sortMapByValue(enumMap);
 
 
         // here is ArrayList which will hold and return our string
@@ -49,24 +53,6 @@ public class CalcInStone implements ICalculate{
 
         return arrayList.toString();
     }
-
-
-    // here is a generic method that takes a Map and sorts it based on its Value, in ascending order
-    public static <K, V extends Comparable<? super V>> List<Map.Entry<K, V>> sortMapByValue(Map<K, V> map ) {
-
-        List<Map.Entry<K, V>> mapList = new LinkedList(map.entrySet());
-
-        Collections.sort(mapList, new Comparator<Map.Entry<K, V>>() {
-            @Override
-            public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
-                return o1.getValue().compareTo(o2.getValue());
-            }
-        });
-
-        return mapList;
-    }
-
-
 
 }
 

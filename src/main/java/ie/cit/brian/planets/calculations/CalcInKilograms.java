@@ -25,7 +25,7 @@ public class CalcInKilograms implements ICalculate{
     @Override
     public <T> String calculationResult(double input) {
 
-        map = planetMap.setMapOfPlanets(input);
+        map = planetMap.createMap(input);
 
         List<String> arrayList = new ArrayList<>();
 

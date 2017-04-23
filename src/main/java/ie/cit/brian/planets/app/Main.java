@@ -8,6 +8,8 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Scanner;
+
 /**
  * Created by brian on 17/04/17.
  */
@@ -36,12 +38,12 @@ public class Main {
 
         double earthWeightInKg = 175;
 
-//        System.out.print("Enter your weight in kg: ");
-//        Scanner input = new Scanner(System.in);
-//        earthWeightInKg = input.nextDouble();
+        System.out.print("Enter your weight in kg: ");
+        Scanner input = new Scanner(System.in);
+        earthWeightInKg = input.nextDouble();
 
         if(earthWeightInKg < 0) {
-            throw new NegativeNumberException("Negative number not allowed here!");
+            throw new NegativeNumberException();
         }
 
         double mass = earthWeightInKg / Planets.EARTH.getSurfaceGravity();

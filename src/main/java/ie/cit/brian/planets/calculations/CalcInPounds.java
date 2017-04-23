@@ -30,7 +30,7 @@ public class CalcInPounds implements ICalculate{
     public <T> String calculationResult(double input) {
 
         // dependency injection
-        treeMap = planetTreeMap.setMapOfPlanets(input);
+        treeMap = planetTreeMap.createMap(input);
 
 
 

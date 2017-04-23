@@ -18,7 +18,7 @@ public class PlanetTreeMap implements ICollection {
     }
 
     @Override
-    public Map<Planets, Double> setMapOfPlanets(double value) {
+    public Map<Planets, Double> createMap(double value) {
 
         for (Planets planet : Planets.values()) {
 

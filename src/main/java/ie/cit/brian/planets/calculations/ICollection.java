@@ -7,5 +7,5 @@ import java.util.Map;
  */
 public interface ICollection {
 
-    Map<Planets, Double> setMapOfPlanets(double value);
+    Map<Planets, Double> createMap(double value);
 }

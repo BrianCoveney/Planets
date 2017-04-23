@@ -5,13 +5,11 @@ package ie.cit.brian.planets.helpers;
  */
 public class NegativeNumberException extends RuntimeException {
 
-    public NegativeNumberException() {  }
+    public NegativeNumberException() {
+        this("Negative number not allowed here!");
+    }
 
     public NegativeNumberException(String message) { super(message); }
-
-    public NegativeNumberException(Throwable cause) { super(cause); }
-
-    public NegativeNumberException(String message, Throwable cause) { super(message, cause); }
 
 
 }
