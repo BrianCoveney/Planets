@@ -16,6 +16,13 @@
     </bean>
 
 
+
+
+    <!--
+        Auto Wiring by Type with Spring
+        the container should try to wire beans together
+        by matching the required Java class and/or Java interface
+    -->
     <bean id="hashMap" class="ie.cit.brian.planets.calculations.PlanetHashMap"/>
 
     <bean id="treeMap" class="ie.cit.brian.planets.calculations.PlanetTreeMap"/>
@@ -51,9 +58,14 @@
 
 
 
-    <!--create bean from Main class-->
+    <!--
+        create bean from Main class
+        comment and un-comment the 'Calculation' and/or 'Writer' options as needed
+    -->
     <bean id="calcbean" class="ie.cit.brian.planets.app.Main" lazy-init="false">
 
+
+        <!-- Calculation options -->
 
         <!--cause setCalculateType (ICalculate <CalcInPounds>) to be called-->
         <!--<property name="calculateType" ref="pounds" />-->
@@ -65,9 +77,11 @@
         <property name="calculateType" ref="stone" />
 
 
+
+        <!-- Writer options -->
+
         <!--cause setWriterType (IWriter <ScreenWriter>) to be called-->
         <property name="writerType" ref="screen" />
-
 
         <!--cause setWriterType (IWriter <DataFileWriter>) to be called-->
         <!--<property name="writerType" ref="file"/>-->

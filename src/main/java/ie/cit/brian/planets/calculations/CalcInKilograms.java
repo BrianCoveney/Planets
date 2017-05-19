@@ -12,6 +12,7 @@ public class CalcInKilograms implements ICalculate{
     private ICollection planetMap;
 
 
+    // Spring Setter-based Dependency Injection
     public void setPlanetMap(ICollection planetMap) {
         this.planetMap = planetMap;
     }
@@ -22,8 +23,9 @@ public class CalcInKilograms implements ICalculate{
     }
 
 
+    // this method sorts alphabetically
     @Override
-    public <T> String calculationResult(double input) {
+    public List<String> calculationResult(double input) {
 
         map = planetMap.createMap(input);
 
@@ -33,9 +35,11 @@ public class CalcInKilograms implements ICalculate{
             arrayList.add("Weight on " + key + " is " + map.get(key));
         }
 
+        // sort alphabetically
         Collections.sort(arrayList, String::compareTo);
 
-        return String.valueOf(arrayList);
+        return arrayList;
+
     }
 
 }

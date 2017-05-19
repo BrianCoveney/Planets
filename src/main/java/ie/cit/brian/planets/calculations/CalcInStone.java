@@ -15,6 +15,7 @@ public class CalcInStone implements ICalculate{
 
     public CalcInStone() { }
 
+    // Spring Setter-based Dependency Injection
     public void setPlanetEnumMap(ICollection planetEnumMap) {
         this.planetMap = planetEnumMap;
     }
@@ -26,8 +27,10 @@ public class CalcInStone implements ICalculate{
     }
 
 
+
+    // sorts the Map by 'value' and ascending order
     @Override
-    public <T> String calculationResult(double input) {
+    public List<String> calculationResult(double input) {
 
         /**
          * @see PlanetEnumMap#createMap(double)
@@ -37,21 +40,19 @@ public class CalcInStone implements ICalculate{
 
         // here is a List to represent the sorted map
         List<Map.Entry<Planets, Double>> list;
-        list = SortMap.sortMapByValue(enumMap);
+        list = SortMap.sortMapByValue(enumMap); // sort using our generic method
 
 
-        // here is ArrayList which will hold and return our string
-        String output;
         List<String> arrayList = new ArrayList<>();
         for(Map.Entry<Planets, Double> entry : list) {
             Planets planet = entry.getKey();
+            Double weight = entry.getValue();
 
-            output = "Weight on " + planet + " is " + entry.getValue();
-            arrayList.add(output);
+            arrayList.add("Weight on " + planet + " is " + weight);
 
         }
 
-        return arrayList.toString();
+        return arrayList;
     }
 
 }

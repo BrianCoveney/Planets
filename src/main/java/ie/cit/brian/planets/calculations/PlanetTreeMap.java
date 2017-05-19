@@ -11,10 +11,10 @@ public class PlanetTreeMap implements ICollection {
     private double surfaceGravity;
     private double weight;
     private static double KG_TO_POUNDS = 2.2;
-    private Map<Planets, Double> mapOfPlanets;
+    private Map<Planets, Double> treeMap;
 
     public PlanetTreeMap() {
-        mapOfPlanets = new TreeMap<>();
+        treeMap = new TreeMap<>();
     }
 
     @Override
@@ -26,10 +26,10 @@ public class PlanetTreeMap implements ICollection {
 
             weight = value * surfaceGravity * KG_TO_POUNDS;
 
-            mapOfPlanets.put(planet, weight);
+            treeMap.put(planet, weight);
         }
 
-        return mapOfPlanets;
+        return treeMap;
     }
 
 

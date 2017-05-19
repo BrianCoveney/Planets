@@ -24,14 +24,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+
+        // this code hooks into the Spring container
+        // and tells is to perform the task of wiring together the beans
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
 
         BeanFactory factory = context;
         Main main = (Main) factory.getBean("calcbean");
 
         main.execute();
 
+
+
     }
+
 
     private void execute() {
 
