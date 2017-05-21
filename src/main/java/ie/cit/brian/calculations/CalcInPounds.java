@@ -1,4 +1,7 @@
-package ie.cit.brian.planets.calculations;
+package ie.cit.brian.calculations;
+
+import ie.cit.brian.planets.Planets;
+import ie.cit.brian.planets.PoundConversion;
 
 import java.util.*;
 
@@ -7,30 +10,29 @@ import java.util.*;
  */
 public class CalcInPounds implements ICalculate{
 
-    private ICollection planetTreeMap;
-
+    private IMap planetTreeMap;
 
     public CalcInPounds() {}
 
-
     // Spring Setter-based Dependency Injection
-    public void setPlanetTreeMap(ICollection planetTreeMap) {
+    public void setPlanetTreeMap(IMap planetTreeMap) {
         this.planetTreeMap = planetTreeMap;
     }
-
 
     @Override
     public String getCalcName() {
         return "Calculation in Pounds";
     }
 
-
     // sorts the Map by 'key' and alphabetical order
     @Override
-    public List<String> calculationResult(double input) {
-
-        // dependency injection
-        Map<Planets, Double> map = planetTreeMap.createMap(input);
+    public List<String> calcWeightOnPlanet(double input) {
+        /**
+         * dependency injection
+         * @see PoundConversion#planetAndWeight(double)
+         * @see beans.xml -> comment: injecting the dependency of objects using autowiring
+         */
+        Map<Planets, Double> map = planetTreeMap.planetAndWeight(input);
 
         // enums are returned in the order in which they were declared.
         // here we sort the enums (by key) alphabetically
@@ -48,7 +50,6 @@ public class CalcInPounds implements ICalculate{
         for(Map.Entry entry : treeMap.entrySet()){
             arrayList.add("Weight on " + entry.getKey() + " is " + entry.getValue());
         }
-
         return arrayList;
     }
 

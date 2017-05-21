@@ -1,4 +1,4 @@
-package ie.cit.brian.planets.writers;
+package ie.cit.brian.writers;
 
 /**
  * Created by brian on 18/04/17.

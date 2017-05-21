@@ -9,7 +9,7 @@
         we need to use the enum valueOf static method as a factory method.
         Ref: https://robertmaldon.blogspot.ie/2007/05/creating-spring-bean-from-java-5-enum.html
     -->
-    <bean id="weightInKilograms" class="ie.cit.brian.planets.calculations.Planets" factory-method="valueOf" >
+    <bean id="weightInKilograms" class="ie.cit.brian.planets.Planets" factory-method="valueOf" >
         <constructor-arg>
             <value>EARTH</value>
         </constructor-arg>
@@ -18,30 +18,38 @@
 
 
 
-    <!--
-        Auto Wiring by Type with Spring
-        the container should try to wire beans together
-        by matching the required Java class and/or Java interface
-    -->
-    <bean id="hashMap" class="ie.cit.brian.planets.calculations.PlanetHashMap"/>
 
-    <bean id="treeMap" class="ie.cit.brian.planets.calculations.PlanetTreeMap"/>
+    <!--create bean from PoundConversion.class-->
+    <bean id="treeMap" class="ie.cit.brian.planets.PoundConversion"/>
 
-    <bean id="enumMap" class="ie.cit.brian.planets.calculations.PlanetEnumMap"/>
+    <!--create bean from StoneConversion.class-->
+    <bean id="enumMap" class="ie.cit.brian.planets.StoneConversion"/>
+
+    <!--create bean from KilogramConversion.class-->
+    <bean id="hashMap" class="ie.cit.brian.planets.KilogramConversion"/>
 
 
-    <!--create bean from CalcInKilogramsrams.class-->
-    <bean id="kilograms" class="ie.cit.brian.planets.calculations.CalcInKilograms" lazy-init="false">
-        <property name="planetMap" ref="hashMap"/>
+    <!--1. Program using dependency injection using an XML file -->
+    <!--create bean from CalcInKilograms.class-->
+    <bean id="kilograms" class="ie.cit.brian.calculations.CalcInKilograms" lazy-init="false">
+        <!--
+            Setter-based Dependency Injection
+            @see CalcInKilograms#setPlanetHashMap
+        -->
+        <property name="planetHashMap" ref="hashMap"/>
     </bean>
 
-    <!--create bean from CalcInPoundsunds.class-->
-    <bean id="pounds" class="ie.cit.brian.planets.calculations.CalcInPounds">
+
+    <!--create bean from CalcInPounds.class-->
+    <bean id="pounds" class="ie.cit.brian.calculations.CalcInPounds">
+        <!-- @see CalcInPounds#setPlanetTreeMap -->
         <property name="planetTreeMap" ref="treeMap"/>
     </bean>
 
-    <!--create bean from CalcInPoundsunds.class-->
-    <bean id="stone" class="ie.cit.brian.planets.calculations.CalcInStone">
+
+    <!--create bean from CalcInStone.class-->
+    <bean id="stone" class="ie.cit.brian.calculations.CalcInStone">
+        <!--@see CalcInStone#setPlanetEnumMap -->
         <property name="planetEnumMap" ref="enumMap"/>
     </bean>
 
@@ -51,35 +59,29 @@
 
 
     <!--create bean from ScreenWriter.class-->
-    <bean id="screen" class="ie.cit.brian.planets.writers.ScreenWriter" />
+    <bean id="screen" class="ie.cit.brian.writers.ScreenWriter" />
 
     <!--crete a bean DataFileWriteriter.class-->
-    <bean id="file" class="ie.cit.brian.planets.writers.DataFileWriter" />
+    <bean id="file" class="ie.cit.brian.writers.DataFileWriter" />
 
 
+    <!--Create bean from Main class. -->
+    <bean id="calcbean" class="ie.cit.brian.app.Main" lazy-init="false">
 
-    <!--
-        create bean from Main class
-        comment and un-comment the 'Calculation' and/or 'Writer' options as needed
-    -->
-    <bean id="calcbean" class="ie.cit.brian.planets.app.Main" lazy-init="false">
+        <!--Comment / Un-Comment Options for 'Calculation' and 'Writer'-->
 
-
-        <!-- Calculation options -->
+        <!-- Calculation Options -->
+        <!--cause setCalculateType (ICalculate <CalcInKilograms>) to be called-->
+        <property name="calculateType" ref="kilograms" />
 
         <!--cause setCalculateType (ICalculate <CalcInPounds>) to be called-->
         <!--<property name="calculateType" ref="pounds" />-->
 
-        <!--cause setCalculateType (ICalculate <CalcInKilograms>) to be called-->
-        <!--<property name="calculateType" ref="kilograms" />-->
-
-        <!--cause setCalculateType (ICalculaCalcInStone>) to be called-->
-        <property name="calculateType" ref="stone" />
+        <!--cause setCalculateType (ICalculateCalcInStone>) to be called-->
+        <!--<property name="calculateType" ref="stone" />-->
 
 
-
-        <!-- Writer options -->
-
+        <!-- Writer Options -->
         <!--cause setWriterType (IWriter <ScreenWriter>) to be called-->
         <property name="writerType" ref="screen" />
 
@@ -89,6 +91,11 @@
     </bean>
 
 
-
-
 </beans>
+
+
+
+
+
+
+

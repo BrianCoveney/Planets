@@ -1,7 +1,7 @@
-package ie.cit.brian.planets.calculations;
+package ie.cit.brian.calculations;
 
-import ie.cit.brian.planets.helpers.SortMap;
-import ie.cit.brian.planets.writers.ScreenWriter;
+import ie.cit.brian.helpers.SortMap;
+import ie.cit.brian.writers.ScreenWriter;
 import org.junit.Before;
 import org.junit.Test;
 

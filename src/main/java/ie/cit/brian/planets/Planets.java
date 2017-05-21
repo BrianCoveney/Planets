@@ -1,4 +1,4 @@
-package ie.cit.brian.planets.calculations;
+package ie.cit.brian.planets;
 
 /**
  * Created by brian on 17/04/17.
@@ -32,14 +32,13 @@ public enum Planets {
         this.surfaceGravity = G * mass / (radius * radius);
     }
 
+    // ...more getters and setters
+
     public double getSurfaceGravity() { return surfaceGravity; }
 
     public double getMass() { return mass; }
 
     public double getRadius() { return radius; }
-
-
-
 
 }
 

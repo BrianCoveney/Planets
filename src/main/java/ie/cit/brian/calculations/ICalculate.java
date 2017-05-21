@@ -1,4 +1,4 @@
-package ie.cit.brian.planets.calculations;
+package ie.cit.brian.calculations;
 
 import java.util.List;
 
@@ -9,6 +9,6 @@ public interface ICalculate {
 
     String getCalcName();
 
-    List<String> calculationResult(double input);
+    List<String> calcWeightOnPlanet(double input);
 
 }

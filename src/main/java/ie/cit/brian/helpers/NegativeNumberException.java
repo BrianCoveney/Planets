@@ -1,4 +1,4 @@
-package ie.cit.brian.planets.helpers;
+package ie.cit.brian.helpers;
 
 /**
  * Created by brian on 20/04/17.

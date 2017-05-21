@@ -1,4 +1,4 @@
-package ie.cit.brian.planets.helpers;
+package ie.cit.brian.helpers;
 
 import java.util.*;
 
@@ -6,7 +6,6 @@ import java.util.*;
  * Created by brian on 23/04/17.
  */
 public class SortMap {
-
 
     // here is a generic method that takes a Map and sorts it based on its Value, in ascending order
     public static <K, V extends Comparable<? super V>> List<Map.Entry<K, V>> sortMapByValue(Map<K, V> map ) {
@@ -22,6 +21,4 @@ public class SortMap {
 
         return mapList;
     }
-
-
 }

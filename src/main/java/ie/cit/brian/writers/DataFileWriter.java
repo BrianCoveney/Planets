@@ -1,4 +1,4 @@
-package ie.cit.brian.planets.writers;
+package ie.cit.brian.writers;
 
 import java.io.BufferedWriter;
 import java.io.File;
