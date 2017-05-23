@@ -1,6 +1,6 @@
 package ie.cit.brian.calculations;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Created by brian on 17/04/17.
@@ -9,6 +9,6 @@ public interface ICalculate {
 
     String getCalcName();
 
-    List<String> calcWeightOnPlanet(double input);
+    Collection<String> calcWeightOnPlanet(double input);
 
 }

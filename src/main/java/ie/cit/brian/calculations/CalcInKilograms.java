@@ -2,7 +2,6 @@ package ie.cit.brian.calculations;
 
 import ie.cit.brian.planets.Planets;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -29,19 +28,15 @@ public class CalcInKilograms implements ICalculate{
 
         Map<Planets, Double> map = planetHashMap.planetAndWeight(input);
 
-        MyArrayList<String> myArrayList = new MyArrayList();
+        CustomArrayList<String> customArrayList = new CustomArrayList<>();
+
 
         for (Planets key : map.keySet()) {
-
-            myArrayList.add("Weight on " + key + " is " + map.get(key));
+            customArrayList.add("Weight on " + key + " is " + map.get(key));
 
         }
 
-//        myArrayList.clear();
-
-        // sort alphabetically
-        Collections.sort(myArrayList, String::compareTo);
-        return myArrayList;
+        return customArrayList;
     }
 
 }
